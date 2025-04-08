@@ -1,0 +1,16 @@
+{
+  "server": "your_server_address",
+  "real_server": "your_real_server_address",
+  "username": "your_username",
+  "password": "your_password",
+  "databases": ["DB1", "DB2", "DB3", "DB4"],
+  "tables": [
+    ["Table1", "Table2"],
+    ["Table3", "Table4"],
+    ["Table5"],
+    ["Table6", "Table7", "Table8", "Table9", "Table10", 
+     "Table11", "Table12", "Table13", "Table14", "Table15",
+     "Table16"]
+  ],
+  "output_file_pattern": "data_{timestamp}.xlsx"
+}

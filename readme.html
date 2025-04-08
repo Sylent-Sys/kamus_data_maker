@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Penggunaan Aplikasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #e1e1e1;
+        }
+
+        .note {
+            background: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffeeba;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Panduan Penggunaan Aplikasi</h1>
+
+    <h2>1. Clone Repository</h2>
+    <p>Clone repository ini menggunakan perintah:</p>
+    <pre>git clone https://github.com/sylent-sys/database-metadata-extractor.git</pre>
+
+    <h2>2. Setup Lingkungan Virtual</h2>
+    <p>Buat dan aktifkan lingkungan virtual:</p>
+    <pre>
+# Untuk Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Untuk Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
+    </pre>
+
+    <h2>3. Install Dependencies</h2>
+    <p>Instal semua dependensi dari requirements.txt:</p>
+    <pre>pip install -r requirements.txt</pre>
+
+    <h2>4. Konfigurasi</h2>
+    <div class="note">
+        <strong>Peringatan Keamanan:</strong>
+        File konfigurasi asli (config.json) sudah di-ignore oleh Git.
+        Pastikan tidak pernah mengunggah file konfigurasi dengan data asli ke repository!
+    </div>
+    <p>Salin file contoh konfigurasi:</p>
+    <pre>cp config.example.json config.json</pre>
+    <p>Edit file config.json dengan editor teks:</p>
+    <pre>
+{
+  "server": "alamat_server_anda",
+  "real_server": "alamat_real_server_anda",
+  "username": "username_database",
+  "password": "password_database",
+  "databases": ["DB1", "DB2", "DB3", "DB4"],
+  "tables": [
+    ["Tabel1", "Tabel2"],
+    ["Tabel3", "Tabel4"],
+    ["Tabel5"],
+    ["Tabel6", "Tabel7", "Tabel8", "Tabel9", "Tabel10"]
+  ],
+  "output_file_pattern": "data_{timestamp}.xlsx"
+}
+    </pre>
+
+    <h2>5. Menjalankan Aplikasi</h2>
+    <p>Jalankan script utama dengan perintah:</p>
+    <pre>python main.py</pre>
+    <p>Hasil akan disimpan dalam format Excel di file dengan nama sesuai pola <code>data_YYYYMMDD_HHMMSS.xlsx</code></p>
+
+    <h2>6. Troubleshooting</h2>
+    <ul>
+        <li>Jika muncul error "Driver not found", pastikan Anda telah menginstal <a
+                href="https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server">ODBC
+                Driver 17 for SQL Server</a></li>
+        <li>Pastikan semua informasi koneksi di config.json benar</li>
+        <li>Pastikan port database tidak diblokir firewall</li>
+    </ul>
+
+    <h2>Contoh Output Logging</h2>
+    <pre>
+2023-10-05 14:30:00 - INFO - Memulai proses ekstraksi data...
+2023-10-05 14:30:01 - INFO - Konfigurasi berhasil dimuat
+2023-10-05 14:30:02 - INFO - Memproses database: Score (1/4)
+2023-10-05 14:30:03 - INFO -   Memproses tabel: ScoreConfirmationStatus (1/2) di database Score
+2023-10-05 14:30:05 - INFO - Data berhasil disimpan ke data_20231005_143005.xlsx
+    </pre>
+</body>
+
+</html>
